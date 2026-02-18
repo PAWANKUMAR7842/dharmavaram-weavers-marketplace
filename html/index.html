@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dharmavaram Weavers Marketplace</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Your existing CSS remains the same */
+        /* Global Styles */
+        :root {
+            --primary: #8B0000;
+            --primary-light: #a83232;
+            --secondary: #D4AF37;
+            --accent: #F5F5DC;
+            --text: #321414;
+            --text-light: #5c3a3a;
+            --white: #ffffff;
+            --gray: #e0e0e0;
+            --dark-gray: #888;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--accent);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: var(--text);
+        }
+
+        .btn-secondary:hover {
+            background-color: #e0b83a;
+            transform: translateY(-2px);
+        }
+
+        .btn-weaver {
+            background-color: var(--secondary);
+            color: var(--text);
+            border-radius: 5px;
+            padding: 8px 15px;
+            font-weight: 600;
+        }
+
+        .btn-weaver:hover {
+            background-color: #e0b83a;
+        }
+
+        .btn-more {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            display: inline-block;
+            margin-top: 8px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn-more:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            font-size: 2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 60px;
+            margin-right: 15px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        nav ul li a.active {
+            color: var(--primary);
+            position: relative;
+        }
+
+        nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 60px;
+            background: linear-gradient(135deg, var(--accent) 0%, #f0e8c8 100%);
+        }
+
+        .hero .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-content {
+            flex: 1;
+            padding-right: 40px;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: var(--text-light);
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: 460px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(139, 0, 0, 0.2);
+        }
+
+        /* Featured Sarees Section */
+        .featured {
+            padding: 60px 0;
+            background-color: var(--white);
+        }
+
+        .saree-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .saree-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .saree-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .saree-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .saree-card h3 {
+            padding: 15px 15px 10px;
+            font-size: 1.1rem;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .card-footer {
+            padding: 10px 15px 15px;
+        }
+
+        /* About Weavers Section */
+        .about-weavers {
+            padding: 60px 0;
+            background-color: var(--accent);
+        }
+
+        .about-weavers .container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .about-image {
+            flex: 1;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-content h2 {
+            text-align: left;
+        }
+
+        .about-content h2::after {
+            left: 0;
+            transform: translateX(0);
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+        }
+
+        /* About Section */
+        .about {
+            padding: 60px 0;
+            background-color: var(--white);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content h2 {
+            text-align: center;
+        }
+
+        .about-content h2::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background-color: var(--accent);
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+
+        .footer-section p, .footer-section li {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-section i {
+            margin-right: 10px;
+            color: var(--secondary);
+            width: 20px;
+            text-align: center;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin-left: 15px;
+            font-size: 1.2rem;
+            color: var(--white);
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary);
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 1s ease-in-out;
+        }
+
+        .slide-in-right {
+            animation: slideInRight 1s ease-in-out;
+        }
+
+        .pop-up {
+            animation: popUp 0.5s ease-in-out;
+        }
+
+        /* Keyframes */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes popUp {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero .container,
+            .about-weavers .container {
+                flex-direction: column;
+            }
+            
+            .hero-content,
+            .about-content {
+                padding-right: 0;
+                margin-bottom: 40px;
+                text-align: center;
+            }
+            
+            .about-content h2 {
+                text-align: center;
+            }
+            
+            .about-content h2::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .hero-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .saree-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo h1 {
+                font-size: 1.4rem;
+            }
+            
+            .logo img {
+                height: 40px;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .saree-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header class="fade-in">
+        <div class="container header-container">
+            <div class="logo">
+                <img src="../images/dmmlogo.png" alt="Dharmavaram Weavers">
+                <h1>Dharmavaram Weavers</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#sarees">Sarees</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="../html/feedback.html">Feedback</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="../admin/index.php">Admin Panel</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero slide-in-left" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Preserving Tradition, Empowering Weavers</h1>
+                <p>Direct from the looms of Dharmavaram to your wardrobe</p>
+                <a href="#sarees" class="btn-weaver">Explore Sarees</a>
+            </div>
+            <div class="hero-image">
+                <img src="../images/home.jpg" alt="Dharmavaram Silk Saree">
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Sarees -->
+    <section class="featured" id="sarees">
+        <div class="container">
+            <h2 class="section-title">Featured Sarees</h2>
+            <div class="saree-grid">
+                <!-- Card 1 -->
+                <div class="saree-card pop-up">
+                    <img src="../images/card1.jpg" alt="Pure Silk Saree">
+                    <h3>Pure Silk with Zari Border</h3>
+                    <div class="card-footer">
+                        <a href="../php/card1.php" class="btn-more">Click for More</a>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="saree-card pop-up">
+                    <img src="../images/card2.jpg" alt="Kalamkari Silk Saree">
+                    <h3>Kanchipuram Print Silk</h3>
+                    <div class="card-footer">
+                        <a href="../php/card2.php" class="btn-more">Click for More</a>
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="saree-card pop-up">
+                    <img src="../images/card3.jpg" alt="Banarasi Style Saree">
+                    <h3>Banarasi Style Silk</h3>
+                    <div class="card-footer">
+                        <a href="../php/card3.php" class="btn-more">Click for More</a>
+                    </div>
+                </div>
+                
+                <!-- Card 4 -->
+                <div class="saree-card pop-up">
+                    <img src="../images/card4.jpg" alt="Upaada Silk Saree">
+                    <h3>Upaada Silk Saree</h3>
+                    <div class="card-footer">
+                        <a href="../php/card4.php" class="btn-more">Click for More</a>
+                    </div>
+                </div>
+                
+                <!-- Card 5 -->
+                <div class="saree-card pop-up">
+                    <img src="../images/card5.jpg" alt="Pochampally Silk Saree">
+                    <h3>Pochampally Silk Saree</h3>
+                    <div class="card-footer">
+                        <a href="../php/card5.php" class="btn-more">Click for More</a>
+                    </div>
+                </div>
+                
+                <!-- Card 6 -->
+                <div class="saree-card pop-up">
+                    <img src="../images/card6.jpg" alt="Gadwal Silk Saree">
+                    <h3>Gadwal Silk Saree</h3>
+                    <div class="card-footer">
+                        <a href="../php/card6.php" class="btn-more">Click for More</a>
+                    </div>
+                </div>
+                
+                <!-- Card 7 -->
+                <div class="saree-card pop-up">
+                    <img src="../images/card7.jpg" alt="Venkatagiri Silk Saree">
+                    <h3>Venkatagiri Silk Saree</h3>
+                    <div class="card-footer">
+                        <a href="../php/card7.php" class="btn-more">Click for More</a>
+                    </div>
+                </div>
+                
+                <!-- Card 8 -->
+                <div class="saree-card pop-up">
+                    <img src="../images/card8.jpg" alt="Kuppadam Silk Saree">
+                    <h3>Kuppadam Silk Saree</h3>
+                    <div class="card-footer">
+                        <a href="../php/card8.php" class="btn-more">Click for More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Weavers Section -->
+    <section class="about-weavers" id="about">
+        <div class="container">
+            <div class="about-image">
+                <img src="../images/about.jpg" alt="Dharmavaram Weaver">
+            </div>
+            <div class="about-content">
+                <h2>Our Weavers</h2>
+                <p>The heart of Dharmavaram sarees lies in the skilled hands of our weavers. Each artisan brings years of experience and a deep understanding of traditional techniques to create these magnificent textiles.</p>
+                <p>Our weavers work on traditional handlooms, often in their own homes, where the rhythmic clatter of the loom is a familiar sound passed down through generations. They meticulously craft each saree, sometimes taking weeks to complete a single piece with intricate designs and patterns.</p>
+                <p>By supporting Dharmavaram Weavers Marketplace, you're not just purchasing a beautiful saree - you're helping preserve a cultural legacy and supporting the livelihoods of these talented artisans and their families.</p>
+                <a href="#contact" class="btn-weaver">Support Our Weavers</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Dharmavaram Weavers</h3>
+                    <p>Empowering traditional weavers with digital access to global markets.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#sarees">Sarees</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Dharmavaram, Andhra Pradesh</p>
+                    <p><i class="fas fa-phone"></i> +91 9398697842</p>
+                    <p><i class="fas fa-envelope"></i> pawankothavalamvgr@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Dharmavaram Weavers Marketplace. All rights reserved.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('show');
+        });
+
+        // Smooth scrolling for navigation links - FIXED VERSION
+        document.querySelectorAll('nav a, .btn-weaver[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                
+                // Only prevent default for anchor links (starting with #)
+                if(targetId.startsWith('#')) {
+                    e.preventDefault();
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        // Close mobile menu if open
+                        document.querySelector('nav ul').classList.remove('show');
+                        
+                        // Scroll to target
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+                // For external links (feedback.html, admin/index.php), let them work normally
+            });
+        });
+
+        // Update active navigation link on scroll - FIXED VERSION
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a[href^="#"]'); // Only anchor links
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if(pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

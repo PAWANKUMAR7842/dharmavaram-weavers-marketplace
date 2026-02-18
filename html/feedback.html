@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../css/main.css" />
+  <title>Feedback | Dharmavaram Weavers Marketplace</title>
+  <style>
+    /* Global Styles */
+    :root {
+      --primary: #8B0000;
+      --primary-light: #a83232;
+      --secondary: #D4AF37;
+      --accent: #F5F5DC;
+      --text: #321414;
+      --text-light: #5c3a3a;
+      --white: #ffffff;
+      --gray: #e0e0e0;
+      --dark-gray: #888;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--accent);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-light);
+      transform: translateY(-2px);
+    }
+
+    /* Header Styles */
+    header {
+      background-color: var(--white);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 15px 0;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 60px;
+      margin-right: 15px;
+    }
+
+    .logo h1 {
+      font-size: 1.8rem;
+      color: var(--primary);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin-left: 25px;
+    }
+
+    nav ul li a {
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: var(--primary);
+    }
+
+    nav ul li a.active {
+      color: var(--primary);
+      position: relative;
+    }
+
+    nav ul li a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--primary);
+    }
+
+    .mobile-menu {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Global Notification */
+    .global-notification {
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 8px 0;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    /* Form Styles */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .input-group {
+      position: relative;
+    }
+
+    .input-group input,
+    .input-group textarea {
+      width: 100%;
+      padding: 12px 15px 12px 45px;
+      border: 1px solid var(--gray);
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .input-group input:focus,
+    .input-group textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1);
+      outline: none;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--dark-gray);
+    }
+
+    /* Feedback-specific styles */
+    .feedback-section {
+      padding: 80px 0;
+      min-height: calc(100vh - 200px);
+    }
+    
+    .feedback-wrapper {
+      display: flex;
+      min-height: 600px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .feedback-image {
+      flex: 1;
+      position: relative;
+      background-color: var(--primary);
+    }
+    
+    .feedback-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.9;
+    }
+    
+    .feedback-image-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 40px;
+      color: var(--white);
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    }
+    
+    .feedback-image-content h2 {
+      color: var(--white);
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+    
+    .feedback-image-content p {
+      margin-bottom: 20px;
+      opacity: 0.9;
+    }
+    
+    .feedback-content {
+      flex: 1;
+      background-color: var(--white);
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .feedback-form-wrapper {
+      max-width: 450px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    
+    .feedback-form-wrapper h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    
+    .feedback-subtitle {
+      color: var(--text-light);
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    
+    .feedback-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .input-group textarea {
+      min-height: 120px;
+      resize: vertical;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    .btn-feedback {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+    
+    .feedback-footer {
+      text-align: center;
+      margin-top: 20px;
+      color: var(--text-light);
+    }
+    
+    .feedback-footer a {
+      color: var(--primary);
+      font-weight: 600;
+    }
+    
+    .feedback-footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer Styles */
+    footer {
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 40px 0 20px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    .footer-section h3 {
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-section h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background-color: var(--secondary);
+    }
+
+    .footer-section p, .footer-section li {
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-section ul li a:hover {
+      color: var(--secondary);
+    }
+
+    .footer-section i {
+      margin-right: 10px;
+      color: var(--secondary);
+      width: 20px;
+      text-align: center;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 20px;
+      text-align: center;
+      font-size: 0.8rem;
+    }
+
+    .social-icons a {
+      display: inline-block;
+      margin-left: 15px;
+      font-size: 1.2rem;
+      color: var(--white);
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: var(--secondary);
+    }
+
+    /* Responsive styles */
+    @media (max-width: 992px) {
+      .feedback-wrapper {
+        flex-direction: column;
+      }
+      
+      .feedback-image {
+        display: none;
+      }
+      
+      .feedback-content {
+        padding: 40px;
+      }
+
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--white);
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      }
+      
+      nav ul.show {
+        display: flex;
+      }
+      
+      nav ul li {
+        margin: 10px 0;
+      }
+      
+      .mobile-menu {
+        display: block;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .logo h1 {
+        font-size: 1.4rem;
+      }
+      
+      .logo img {
+        height: 40px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .feedback-content {
+        padding: 20px;
+      }
+      
+      .feedback-form-wrapper h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Global Notification -->
+  <div class="global-notification">
+    <div class="container">
+      <p>
+        DIRECT FROM WEAVERS - FAIR PRICES & FREE DELIVERY ON ORDERS ABOVE ₹2000! SHOP NOW
+      </p>
+    </div>
+  </div>
+
+  <!-- Header with Navigation -->
+  <header class="fade-in">
+    <div class="container header-container">
+      <div class="logo">
+        <img src="../images/dmmlogo.png" alt="Dharmavaram Weavers">
+        <h1>Dharmavaram Weavers</h1>
+      </div>
+      <nav>
+        <ul>
+        <li><a href="../html/index.html" class="active">Home</a></li>
+                    <li><a href="../html/index.html#saree">Sarees</a></li>
+                   <li><a href="../html/index.html#about">About</a></li>
+
+                    <li><a href="../html/feedback.html">Feedback</a></li>
+                    <li><a href="#foot">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="mobile-menu">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- Feedback Section Start -->
+  <section class="feedback-section">
+    <div class="container">
+      <div class="feedback-wrapper">
+        <div class="feedback-image">
+          <img src="../images/feedbackimg.jpg" alt="Dharmavaram Weaver">
+          <div class="feedback-image-content">
+            <h2>Share Your Experience</h2>
+            <p>Your feedback helps us improve our services and support our weaver community. We value your opinion and strive to provide the best shopping experience.</p>
+            <p>Thank you for supporting traditional Dharmavaram handloom weaving!</p>
+          </div>
+        </div>
+        <div class="feedback-content">
+          <div class="feedback-form-wrapper">
+            <h1>We'd Love Your Feedback</h1>
+            <p class="feedback-subtitle">Help us serve you better by sharing your experience</p>
+      <form class="feedback-form" id="feedback-form" action="../php/submit_feedback.php" method="POST">
+  
+  <div class="form-group">
+    <label for="feedback-name">Full Name</label>
+    <div class="input-group">
+      <span class="input-icon"><i class="bi bi-person"></i></span>
+      <input type="text" id="feedback-name" name="name" placeholder="Enter your full name" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="feedback-email">Email Address</label>
+    <div class="input-group">
+      <span class="input-icon"><i class="bi bi-envelope"></i></span>
+      <input type="email" id="feedback-email" name="email" placeholder="Enter your email" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="feedback-message">Your Feedback</label>
+    <div class="input-group">
+      <span class="input-icon"><i class="bi bi-chat-left-text"></i></span>
+      <textarea id="feedback-message" name="message" placeholder="Tell us about your experience..." required></textarea>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-feedback">Submit Feedback</button>
+</form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Feedback Section End -->
+
+  <!-- Footer Start -->
+  <footer id="foot">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Dharmavaram Weavers</h3>
+          <p>Empowering traditional weavers with digital access to global markets.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Sarees</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p><i class="fas fa-map-marker-alt"></i> Dharmavaram, Andhra Pradesh</p>
+          <p><i class="fas fa-phone"></i> +91 9398697842</p>
+          <p><i class="fas fa-envelope"></i> pawankothavalamvgr@gmail.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 Dharmavaram Weavers Marketplace. All rights reserved.</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Footer End -->
+
+</body>
+
+</html>

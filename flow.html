@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dharmavaram Weavers Marketplace - System Architecture</title>
+  <style>
+    /* ====== Base Styles ====== */
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(to bottom right, #f8fafc, #eff6ff, #f1f5f9);
+      color: #1f2937;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    h1, h2, h3 {
+      margin: 0;
+    }
+    .section {
+      background: #fff;
+      border-radius: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      margin-bottom: 1.5rem;
+      padding: 1.5rem;
+    }
+    .border-top-blue { border-top: 4px solid #3b82f6; }
+    .border-top-orange { border-top: 4px solid #f97316; }
+    .border-top-red { border-top: 4px solid #ef4444; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .icon-box {
+      background: #e0f2fe;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+    }
+    .text-sm { font-size: 0.875rem; color: #4b5563; }
+    .text-xs { font-size: 0.75rem; color: #6b7280; }
+
+    /* ====== Gradient Sections ====== */
+    .gradient-emerald {
+      background: linear-gradient(to right, #10b981, #14b8a6);
+      color: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .gradient-purple {
+      background: linear-gradient(to right, #8b5cf6, #ec4899, #f43f5e);
+      color: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ====== Card Grid ====== */
+    .grid {
+      display: grid;
+      gap: 1rem;
+    }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    @media (max-width: 768px) {
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 1rem;
+      padding: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: box-shadow 0.3s;
+    }
+    .card:hover {
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+    .icon-sm {
+      background: #d1fae5;
+      padding: 0.75rem;
+      border-radius: 0.75rem;
+      display: inline-block;
+      margin-bottom: 0.75rem;
+    }
+
+    /* ====== Divider / Arrows ====== */
+    .arrow {
+      text-align: center;
+      font-size: 2rem;
+      color: #9ca3af;
+      margin: 1rem 0;
+    }
+    .arrow-bidirectional {
+      text-align: center;
+      color: #a78bfa;
+      font-size: 1.5rem;
+      line-height: 1.2;
+    }
+
+    /* ====== Database Section ====== */
+    .data-box {
+      background: #ffedd5;
+      border-radius: 0.75rem;
+      padding: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .data-box p {
+      margin: 0;
+    }
+
+    /* ====== Features Section ====== */
+    .features {
+      background: linear-gradient(to bottom right, #e0e7ff, #f3e8ff, #fce7f3);
+      border-radius: 1rem;
+      padding: 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .feature-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .feature {
+      text-align: center;
+    }
+    .feature-icon {
+      background: #fff;
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 0.5rem;
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    /* ====== Simple SVG Icons ====== */
+    svg { width: 24px; height: 24px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 style="text-align:center; font-size:2rem; font-weight:bold; margin-bottom:2rem;">
+      Dharmavaram Weavers Marketplace - System Architecture
+    </h1>
+
+    <!-- User Interface -->
+    <div class="section border-top-blue">
+      <div class="section-header">
+        <div class="icon-box">👤</div>
+        <h2>User Interface</h2>
+      </div>
+      <p class="text-sm">• <strong>Email Registration</strong></p>
+      <p class="text-sm">• <strong>Browse Sarees (8 Types)</strong></p>
+      <p class="text-sm">• <strong>Add to Cart & Checkout</strong></p>
+      <p class="text-sm">• <strong>Submit Queries</strong></p>
+      <p class="text-sm">• <strong>Rate & Feedback</strong></p>
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <!-- Frontend Layer -->
+    <div class="gradient-emerald">
+      <h2 style="display:flex; align-items:center; gap:0.75rem;"><span>🖥️</span> Frontend Layer (HTML/CSS/Bootstrap)</h2>
+      <div class="grid grid-4" style="margin-top:1.5rem;">
+        <div class="card"><div class="icon-sm">🛡️</div><h3>Login Page</h3><p class="text-xs">User login with email & password</p></div>
+        <div class="card"><div class="icon-sm">👤</div><h3>Registration Page</h3><p class="text-xs">New user registration form</p></div>
+        <div class="card"><div class="icon-sm">📦</div><h3>Home Page</h3><p class="text-xs">Display sarees with images, price, "Add to Cart"</p></div>
+        <div class="card"><div class="icon-sm">🛒</div><h3>Cart Page</h3><p class="text-xs">View items, edit quantity, delete</p></div>
+        <div class="card"><div class="icon-sm">💳</div><h3>Checkout Page</h3><p class="text-xs">Enter address, place order</p></div>
+        <div class="card"><div class="icon-sm">📚</div><h3>About Page</h3><p class="text-xs">Info about Dharmavaram sarees</p></div>
+        <div class="card"><div class="icon-sm">📩</div><h3>Contact Page</h3><p class="text-xs">Contact form to admin</p></div>
+        <div class="card"><div class="icon-sm">⭐</div><h3>Feedback Page</h3><p class="text-xs">User feedback on products</p></div>
+      </div>
+    </div>
+
+    <div class="arrow-bidirectional">↑<br>↓</div>
+
+    <!-- Backend Layer -->
+    <div class="gradient-purple">
+      <h2 style="display:flex; align-items:center; gap:0.75rem;"><span>🖥️</span> Backend Layer (PHP API)</h2>
+      <div class="grid grid-3" style="margin-top:1.5rem;">
+        <div class="card">
+          <h3>User Management</h3>
+          <ul class="text-sm">
+            <li>• Email validation</li>
+            <li>• Registration</li>
+            <li>• Login</li>
+            <li>• Session handling</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Product Management</h3>
+          <ul class="text-sm">
+            <li>• Fetch saree types</li>
+            <li>• Add/Edit/Delete sarees</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Order Management</h3>
+          <ul class="text-sm">
+            <li>• Add to cart</li>
+            <li>• Checkout</li>
+            <li>• Update order status</li>
+            <li>• Email notifications</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Feedback Management</h3>
+          <ul class="text-sm">
+            <li>• Store user feedback</li>
+            <li>• Retrieve feedback</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Email Notification</h3>
+          <ul class="text-sm">
+            <li>• PHPMailer integration</li>
+            <li>• Order status updates</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <!-- Database + Admin -->
+    <div class="grid grid-2">
+      <div class="section border-top-orange">
+        <div class="section-header">
+          <div class="icon-box" style="background:#ffedd5;">💾</div>
+          <h2>Data Storage Layer</h2>
+        </div>
+        <div class="data-box">
+          <p class="text-sm"><strong>users</strong></p>
+          <p class="text-xs">id, first_name, last_name, email, phone, password_hash</p>
+        </div>
+        <div class="data-box">
+          <p class="text-sm"><strong>sarees</strong></p>
+          <p class="text-xs">id, name, type, price, image_url, description</p>
+        </div>
+        <div class="data-box">
+          <p class="text-sm"><strong>orders</strong></p>
+          <p class="text-xs">id, user_id, total_amount, address, payment_method, status, created_at</p>
+        </div>
+        <div class="data-box">
+          <p class="text-sm"><strong>order_items</strong></p>
+          <p class="text-xs">id, order_id, saree_id, quantity, price</p>
+        </div>
+        <div class="data-box">
+          <p class="text-sm"><strong>feedback</strong></p>
+          <p class="text-xs">id, user_id, message, rating, created_at</p>
+        </div>
+        <div class="data-box">
+          <p class="text-sm"><strong>admin</strong></p>
+          <p class="text-xs">id, username, password_hash</p>
+        </div>
+      </div>
+
+      <div class="section border-top-red">
+        <div class="section-header">
+          <div class="icon-box" style="background:#fee2e2;">🛡️</div>
+          <h2>Admin Dashboard</h2>
+        </div>
+        <div class="data-box" style="background:#fee2e2;">
+          <p><strong>View All Orders</strong></p>
+          <p class="text-xs">Monitor all placed orders</p>
+        </div>
+        <div class="data-box" style="background:#fee2e2;">
+          <p><strong>Update Order Status</strong></p>
+          <p class="text-xs">Pending → Confirmed → Shipped → Delivered</p>
+        </div>
+        <div class="data-box" style="background:#fee2e2;">
+          <p><strong>Auto Email Notifications</strong></p>
+          <p class="text-xs">Send status updates to users</p>
+        </div>
+        <div class="data-box" style="background:#fee2e2;">
+          <p><strong>Manage Products</strong></p>
+          <p class="text-xs">Add/Edit/Delete sarees from catalog</p>
+        </div>
+        <div class="data-box" style="background:#fee2e2;">
+          <p><strong>View Feedback</strong></p>
+          <p class="text-xs">Monitor user reviews & ratings</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features -->
+    <div class="features">
+      <h2>Platform Key Features</h2>
+      <div class="feature-grid" style="margin-top:1.5rem;">
+        <div class="feature">
+          <div class="feature-icon">📦</div>
+          <p><strong>Authentic Sarees</strong></p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🛒</div>
+          <p><strong>Easy Ordering</strong></p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">📧</div>
+          <p><strong>Email Updates</strong></p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🛡️</div>
+          <p><strong>Secure Login</strong></p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">📱</div>
+          <p><strong>Mobile Friendly</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

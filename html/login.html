@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../css/main.css" />
+  <title>Login | Dharmavaram Weavers Marketplace</title>
+</head>
+
+<body>
+  <!-- Header Start -->
+  <header>
+    <div class="global-notification">
+      <div class="container">
+        <p>
+          DIRECT FROM WEAVERS - FAIR PRICES & FREE DELIVERY ON ORDERS ABOVE ₹2000!SHOP NOW
+        </p>
+      </div>
+    </div>
+    <center>
+    <div class="header-row">
+      <div class="container">
+        <div class="header-wrapper">
+          <div class="header-mobile">
+            <i class="bi bi-list" id="btn-menu"></i>
+          </div>
+          
+          <div class="header-left">
+            <img src="../images/dmmlogo.png" class="log" alt="">
+            <a href="index.html" class="logo">Dharmavaram Weavers</a>
+          </div>
+        </div>
+      </div>
+    </div></center>
+  </header>
+  <!-- Header End -->
+
+  <!-- Login Section Start -->
+  <section class="auth-section">
+    <div class="container">
+      <div class="auth-wrapper">
+        <div class="auth-image">
+          <img src="../images/login.jpg" alt="Dharmavaram Weaver">
+          <div class="auth-image-content">
+            <h2>Welcome Back!</h2>
+            <p>Login to access your account and continue your shopping experience.</p>
+            <a href="register.html" class="btn btn-secondary">Create Account</a>
+          </div>
+        </div>
+        <div class="auth-content">
+          <div class="auth-form-wrapper">
+            <h1>Login to Your Account</h1>
+            <p class="auth-subtitle">Access your orders, wishlist and weaver connections</p>
+            
+           <form class="auth-form" id="login-form" action="../php/login.php" method="POST">
+  <div class="form-group">
+    <label for="login-email">Email Address</label>
+    <div class="input-group">
+      <span class="input-icon"><i class="bi bi-envelope"></i></span>
+      <input type="email" id="login-email" name="login-email" placeholder="Enter your email" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="login-password">Password</label>
+    <div class="input-group">
+      <span class="input-icon"><i class="bi bi-lock"></i></span>
+      <input type="password" id="login-password" name="login-password" placeholder="Enter your password" required>
+      <button type="button" class="password-toggle"><i class="bi bi-eye"></i></button>
+    </div>
+    <div class="form-options">
+      <label class="remember-me">
+        <input type="checkbox" name="remember-me"> Remember me
+      </label>
+      
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-auth">Login</button>
+</form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Login Section End -->
+
+  <!-- Footer Start -->
+  <section class="footer">
+    <div class="copyright-row">
+      <div class="container">
+        <div class="footer-copyright">
+          <div class="site-copyright">
+            <p>
+              Copyright © 2023 Dharmavaram Weavers Marketplace. All rights reserved.
+            </p>
+          </div>
+          <div class="footer-menu">
+            <ul class="footer-menu-list">
+              <li class="list-item">
+                <a href="privacy.html">Privacy Policy</a>
+              </li>
+              <li class="list-item">
+                <a href="terms.html">Terms and Conditions</a>
+              </li>
+              <li class="list-item">
+                <a href="sitemap.html">Sitemap</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Footer End -->
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+
+</html> 
